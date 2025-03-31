@@ -1,46 +1,40 @@
 package com.appsnica.login
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var nombreInput: EditText
-    private lateinit var correoInput: EditText
-    private lateinit var passwordInput: EditText
-    private lateinit var loginBtn: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        nombreInput = findViewById(R.id.nombre_input)
-        correoInput = findViewById(R.id.email_input)
-        passwordInput = findViewById(R.id.password_input)
-        loginBtn = findViewById(R.id.login_button)
+        val nombreInput = findViewById<EditText>(R.id.nombre_input)
+        val emailInput = findViewById<EditText>(R.id.email_input)
+        val passwordInput = findViewById<EditText>(R.id.password_input)
+        val loginButton = findViewById<Button>(R.id.login_button)
 
-        loginBtn.setOnClickListener {
-            val nombre = nombreInput.text.toString()
-            val correo = correoInput.text.toString()
-            val password = passwordInput.text.toString()
+        loginButton.setOnClickListener {
+            val nombre = nombreInput.text.toString().trim()
+            val email = emailInput.text.toString().trim()
+            val password = passwordInput.text.toString().trim()
 
-            if (nombre.isEmpty() || correo.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
+            if (nombre.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
             } else {
+                // Navegar a la pantalla principal
                 val intent = Intent(this, usuario_menu::class.java)
                 intent.putExtra("NOMBRE_USUARIO", nombre)
+                intent.putExtra("CORREO_USUARIO", email)
                 startActivity(intent)
                 finish()
             }
         }
     }
 }
+
 
 
 

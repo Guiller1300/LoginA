@@ -16,6 +16,9 @@
             android:name=".usuario_menu"
             android:exported="false" />
         <activity
+            android:name=".PerfilActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

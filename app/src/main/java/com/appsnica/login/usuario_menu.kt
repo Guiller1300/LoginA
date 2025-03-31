@@ -12,11 +12,16 @@ class usuario_menu : AppCompatActivity() {
         setContentView(R.layout.activity_usuario_menu)
 
         val nombreUsuario = intent.getStringExtra("NOMBRE_USUARIO")
+        val correoUsuario = intent.getStringExtra("CORREO_USUARIO")
+
         val welcomeText = findViewById<TextView>(R.id.welcome_text)
         welcomeText.text = "¡Bienvenido, $nombreUsuario!"
 
         findViewById<Button>(R.id.btn_perfil).setOnClickListener {
-            startActivity(Intent(this, PerfilActivity::class.java))
+            val intentPerfil = Intent(this, PerfilActivity::class.java)
+            intentPerfil.putExtra("NOMBRE_USUARIO", nombreUsuario)
+            intentPerfil.putExtra("CORREO_USUARIO", correoUsuario)
+            startActivity(intentPerfil)
         }
 
         findViewById<Button>(R.id.btn_config).setOnClickListener {
