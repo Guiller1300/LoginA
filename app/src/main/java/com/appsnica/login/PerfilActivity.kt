@@ -28,6 +28,11 @@ class PerfilActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+
+            val btnSalir = findViewById<Button>(R.id.btn_regresar_menu)
+            btnSalir.setOnClickListener {
+                finish() // Vuelve a la actividad anterior
+            }
         } catch (e: Exception) {
             Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
             e.printStackTrace()

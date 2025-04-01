@@ -18,6 +18,8 @@
         <activity
             android:name=".PerfilActivity"
             android:exported="false" />
+        <activity android:name=".ConfiguracionActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
